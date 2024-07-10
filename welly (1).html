@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #d1cbcb; /* Warna latar belakang yang lebih cerah */
+            color: #333; /* Warna teks yang lebih gelap */
+            margin: 0;
+            padding: 0;
+        }
+        .login-container {
+            background-color: #ffffff; /* Warna latar belakang putih */
+            padding: 40px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            text-align: center;
+            max-width: 400px; /* Lebar maksimum kontainer login */
+            width: 100%;
+        }
+        .login-container h2 {
+            color: #4CAF50;
+            font-size: 32px; /* Ukuran teks lebih besar */
+            margin-bottom: 20px; /* Ruang tambahan di bawah judul */
+        }
+        .login-container label {
+            color: #333; /* Warna teks yang lebih gelap */
+            font-size: 18px; /* Ukuran teks label */
+        }
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px; /* Ukuran teks input */
+        }
+        .login-container button {
+            background-color: #4CAF50; /* Warna tombol hijau */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px; /* Ukuran teks tombol */
+        }
+        .login-container button:hover {
+            background-color: #45a049; /* Warna tombol hover */
+        }
+        .biodata-container {
+            display: none;
+            background-color: #ffffff; /* Warna latar belakang putih */
+            padding: 40px; /* Padding tambahan untuk memperbesar konten */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            text-align: left;
+            max-width: 600px; /* Lebar maksimum kontainer biodata */
+            width: 100%;
+            color: #333; /* Warna teks yang lebih gelap */
+            margin-top: 20px; /* Jarak antara login container dan biodata container */
+            position: relative; /* Memungkinkan penempatan absolut pada gambar */
+        }
+        .biodata-container h2 {
+            color: #4CAF50;
+            font-size: 36px; /* Ukuran teks lebih besar */
+            margin-bottom: 20px; /* Ruang tambahan di bawah judul */
+        }
+        .biodata-container p {
+            font-size: 20px; /* Ukuran teks lebih besar */
+            margin-bottom: 10px; /* Ruang tambahan di bawah setiap paragraf */
+        }
+        /* CSS untuk gambar di biodata */
+        .side-image {
+            position: absolute;
+            top: 50%;
+            right: -10%; /* Posisi foto agak ke kanan */
+            transform: translateY(-50%); /* Posisi foto vertikal tengah */
+            width: 40%; /* Sesuaikan ukuran gambar di samping */
+            max-width: 300px; /* Ukuran maksimum gambar */
+            height: auto; /* Tinggi gambar menyesuaikan */
+            background-image: url('welly.jpeg'); /* Ganti dengan path gambar yang benar */
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px; /* Sudut border-radius */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Bayangan pada gambar */
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <label for="username">Nama Pengguna:</label><br>
+        <input type="text" id="username"><br><br>
+        <label for="password">Kata Sandi:</label><br>
+        <input type="password" id="password"><br><br>
+        <button onclick="login()">Login</button>
+    </div>
+
+    <div class="biodata-container" id="biodata">
+        <!-- Foto di latar belakang biodata -->
+        <div class="side-image" id="sideImageBiodata"></div>
+        <h2>Biodata Diri</h2>
+        <p><strong>Nama:</strong> <span id="nama"></span></p>
+        <p><strong>Alamat:</strong> <span id="alamat"></span></p>
+        <p><strong>Telepon:</strong> <span id="telepon"></span></p>
+    </div>
+
+    <script>
+        const USERNAME = "wellyyana";
+        const PASSWORD = "000000";
+        const BIODATA = {
+            "Nama": "wellyyana",
+            "Alamat": "bandar lampung",
+            "Telepon": "089699862464"
+        };
+
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            if (username === USERNAME && password === PASSWORD) {
+                document.querySelector('.login-container').style.display = 'none';
+                document.getElementById('nama').textContent = BIODATA.Nama;
+                document.getElementById('alamat').textContent = BIODATA.Alamat;
+                document.getElementById('telepon').textContent = BIODATA.Telepon;
+                document.getElementById('biodata').style.display = 'block';
+            } else {
+                alert("Nama pengguna atau kata sandi salah.");
+            }
+        }
+    </script>
+</body>
+</html>
